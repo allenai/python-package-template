@@ -12,3 +12,5 @@ After creating a new repository from this template, you need to:
     ```bash
     find . -type f -not -path ./.git -not -path ./README.md | xargs grep 'my_package'
     ```
+
+3. Add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`.
