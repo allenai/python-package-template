@@ -6,6 +6,9 @@ ignore =
     E203  # whitespace before :
     W503  # line break before binary operator
 
+exclude =
+    .venv/**
+
 per-file-ignores =
     # __init__.py files are allowed to have unused imports and lines-too-long
     */__init__.py:F401
