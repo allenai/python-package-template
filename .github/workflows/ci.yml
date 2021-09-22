@@ -75,9 +75,11 @@ jobs:
               run: |
                 black --check .
 
-          - name: Docs
-            run: |
-              cd docs && make html
+          - python: 3.8
+            task:
+              name: Docs
+              run: |
+                cd docs && make html
 
     steps:
       - uses: actions/checkout@v2
