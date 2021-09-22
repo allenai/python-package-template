@@ -13,7 +13,7 @@ pip install my_package
 
 ## Installing from source
 
-To install **my_package** from source, first clone [the respository](https://github.com/allenai/my_package):
+To install **my_package** from source, first clone [the repository](https://github.com/allenai/my_package):
 
 ```bash
 git clone https://github.com/allenai/my_package.git
