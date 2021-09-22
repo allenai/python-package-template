@@ -41,18 +41,14 @@ jobs:
         git diff --name-only $(git merge-base origin/main HEAD) | grep '^CHANGELOG.md$' && echo "Thanks for helping keep our CHANGELOG up-to-date!"
 
   checks:
-    name: ${{ matrix.task.name }}
+    name: python ${{ matrix.python }} - ${{ matrix.task.name }}
     runs-on: [ubuntu-latest]
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        python: [3.8]
+        python: [3.6, 3.7, 3.8]
         task:
-          - name: Style
-            run: |
-              black --check .
-
           - name: Lint
             run: |
               flake8 .
@@ -65,10 +61,23 @@ jobs:
             run: |
               pytest -v --color=yes tests/
 
-          - name: Build
+        include:
+          - python: 3.8
+            task:
+              name: Build
+              run: |
+                python setup.py check
+                python setup.py bdist_wheel sdist
+
+          - python: 3.8
+            task:
+              name: Style
+              run: |
+                black --check .
+
+          - name: Docs
             run: |
-              python setup.py check
-              python setup.py bdist_wheel sdist
+              cd docs && make html
 
     steps:
       - uses: actions/checkout@v2
