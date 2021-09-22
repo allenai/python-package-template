@@ -8,7 +8,7 @@ This template repo comes with all of the boiler plate for:
 
 - Robust CI with GitHub Actions.
 - Dependabot configuration.
-- Great looking API documentation (run `make docs` to preview).
+- Great looking API documentation built using [Sphinx](https://www.sphinx-doc.org/en/master/) (run `make docs` to preview).
 - Automatic GitHub and PyPI releases. Just follow the steps in [`RELEASE_PROCESS.md`](./RELEASE_PROCESS.md) to trigger a new release.
 
 ## Usage
