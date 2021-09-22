@@ -22,9 +22,15 @@ with open("requirements.txt") as requirements_file:
             continue
         install_requirements.append(fix_url_dependencies(line))
 
+# version.py defines the VERSION and VERSION_SHORT variables.
+# We use exec here so we don't import cached_path whilst setting up.
+VERSION = {}  # type: ignore
+with open("my_package/version.py", "r") as version_file:
+    exec(version_file.read(), VERSION)
+
 setup(
     name="my_package",
-    version="0.0.1",
+    version=VERSION["VERSION"],
     description="",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
@@ -36,7 +42,7 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     keywords="",
-    url="",
+    url="https://github.com/allenai/my_package",
     author="Allen Institute for Artificial Intelligence",
     author_email="contact@allenai.org",
     license="Apache",
