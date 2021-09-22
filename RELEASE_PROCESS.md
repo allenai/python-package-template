@@ -12,7 +12,7 @@
     ./scripts/release.sh
     ```
 
-    This will commit the changes to the `version.py` file and then create a new tag in git
+    This will commit the changes to the CHANGELOG and `version.py` files and then create a new tag in git
     which will trigger a workflow on GitHub Actions that handles the rest.
 
 ## Fixing a failed release
