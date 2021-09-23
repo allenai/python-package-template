@@ -35,3 +35,18 @@ This template repo comes with all of the boiler plate for:
     ```
 
 3. Add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`.
+
+4. Commit and push your changes, then make sure all CI checks pass.
+
+5. Go to [readthedocs.org](https://readthedocs.org/dashboard/import/?) and import your new project.
+    Then click on the "Admin" button, navigate to "Automation Rules" in the sidebar, click "Add Rule", and then enter the following fields:
+
+    - **Description:** Publish new versions from tags
+    - **Match:** Custom Match
+    - **Custom match:** v[vV]
+    - **Version:** Tag
+    - **Action:** Activate version
+
+    Then hit "Save".
+
+    After your first release, the docs will automatically be publish to [your-project-name.readthedocs.io](https://your-project-name.readthedocs.io/).
