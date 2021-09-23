@@ -7,7 +7,12 @@ ignore =
     W503  # line break before binary operator
 
 exclude =
-    .venv/**
+    .venv
+    .git
+    __pycache__
+    docs/build
+    dist
+    .mypy_cache
 
 per-file-ignores =
     # __init__.py files are allowed to have unused imports and lines-too-long
