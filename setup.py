@@ -1,26 +1,28 @@
 from setuptools import setup, find_packages
 
-# Load requirements.txt with a special case for allennlp so we can handle
-# cross-library integration testing.
-with open("requirements.txt") as requirements_file:
-    import re
 
-    def fix_url_dependencies(req: str) -> str:
-        """Pip and setuptools disagree about how URL dependencies should be handled."""
-        m = re.match(
-            r"^(git\+)?(https|ssh)://(git@)?github\.com/([\w-]+)/(?P<name>[\w-]+)\.git", req
-        )
-        if m is None:
-            return req
-        else:
-            return f"{m.group('name')} @ {req}"
+def read_requirements(filename: str):
+    with open(filename) as requirements_file:
+        import re
 
-    install_requirements = []
-    for line in requirements_file:
-        line = line.strip()
-        if line.startswith("#") or len(line) <= 0:
-            continue
-        install_requirements.append(fix_url_dependencies(line))
+        def fix_url_dependencies(req: str) -> str:
+            """Pip and setuptools disagree about how URL dependencies should be handled."""
+            m = re.match(
+                r"^(git\+)?(https|ssh)://(git@)?github\.com/([\w-]+)/(?P<name>[\w-]+)\.git", req
+            )
+            if m is None:
+                return req
+            else:
+                return f"{m.group('name')} @ {req}"
+
+        requirements = []
+        for line in requirements_file:
+            line = line.strip()
+            if line.startswith("#") or len(line) <= 0:
+                continue
+            requirements.append(fix_url_dependencies(line))
+    return requirements
+
 
 # version.py defines the VERSION and VERSION_SHORT variables.
 # We use exec here so we don't import cached_path whilst setting up.
@@ -49,6 +51,7 @@ setup(
     packages=find_packages(
         exclude=["*.tests", "*.tests.*", "tests.*", "tests"],
     ),
-    install_requires=install_requirements,
+    install_requires=read_requirements("requirements.txt"),
+    extras_require={"dev": read_requirements("dev-requirements.txt")},
     python_requires=">=3.6.1",
 )
