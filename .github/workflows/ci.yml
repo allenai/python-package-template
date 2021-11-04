@@ -99,6 +99,12 @@ jobs:
           . .venv/bin/activate
           pip install -e .[dev]
 
+      - name: Install editable (cache hit)
+        if: steps.virtualenv-cache.outputs.cache-hit == 'true'
+        run: |
+          . .venv/bin/activate
+          pip install --no-deps -e .[dev]
+
       - name: Show environment info
         run: |
           . .venv/bin/activate
@@ -117,6 +123,12 @@ jobs:
         with:
           name: package
           path: dist
+
+      - name: Clean up
+        if: always()
+        run: |
+          . .venv/bin/activate
+          pip uninstall -y my_package
 
   release:
     name: Release
