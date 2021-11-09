@@ -6,7 +6,7 @@ mypy==0.910
 
 # Automatic code formatting
 black==21.10b0
-isort==5.10.0
+isort==5.10.1
 
 # Running tests
 pytest
