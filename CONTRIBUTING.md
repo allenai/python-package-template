@@ -67,12 +67,23 @@ When you're ready to contribute code to address an open issue, please follow the
         upstream https://github.com/allenai/my_package.git (fetch)
         upstream https://github.com/allenai/my_package.git (push)
 
-    Finally, you'll need to create a Python 3 virtual environment suitable for working on this project. There a number of tools out there that making working with virtual environments easier, but the most direct way is with the [`venv` module](https://docs.python.org/3.7/library/venv.html) in the standard library.
+    Finally, you'll need to create a Python 3 virtual environment suitable for working on this project. There a number of tools out there that making working with virtual environments easier.
+    The most direct way is with the [`venv` module](https://docs.python.org/3.7/library/venv.html) in the standard library, but if you're new to Python or you don't already have a recent Python 3 version installed on your machine,
+    we recommend [Miniconda](https://docs.conda.io/en/latest/miniconda.html).
+
+    On Mac, for example, you can install Miniconda with [Homebrew](https://brew.sh/):
+
+        brew install miniconda
+
+    Then you can create and activate a new Python environment by running:
+
+        conda create -n my_package python=3.9
+        conda activate my_package
 
     Once your virtual environment is activated, you can install your local clone in "editable mode" with
 
         pip install -U pip setuptools wheel
-        pip install -e .[dev]
+        pip install -e .[dev,all]
 
     The "editable mode" comes from the `-e` argument to `pip`, and essential just creates a symbolic link from the site-packages directory of your virtual environment to the source code in your local clone. That way any changes you make will be immediately reflected in your virtual environment.
 
