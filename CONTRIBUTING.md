@@ -38,30 +38,30 @@ When you're ready to contribute code to address an open issue, please follow the
     <details><summary>Expand details 👇</summary><br/>
 
     If you haven't already done so, please [fork](https://help.github.com/en/enterprise/2.13/user/articles/fork-a-repo) this repository on GitHub.
-    
+
     Then clone your fork locally with
-    
+
         git clone https://github.com/USERNAME/my_package.git
-    
+
     or 
-    
+
         git clone git@github.com:USERNAME/my_package.git
-    
+
     At this point the local clone of your fork only knows that it came from *your* repo, github.com/USERNAME/my_package.git, but doesn't know anything the *main* repo, [https://github.com/allenai/my_package.git](https://github.com/allenai/my_package). You can see this by running
-    
+
         git remote -v
-    
+
     which will output something like this:
-    
+
         origin https://github.com/USERNAME/my_package.git (fetch)
         origin https://github.com/USERNAME/my_package.git (push)
-    
+
     This means that your local clone can only track changes from your fork, but not from the main repo, and so you won't be able to keep your fork up-to-date with the main repo over time. Therefore you'll need to add another "remote" to your clone that points to [https://github.com/allenai/my_package.git](https://github.com/allenai/my_package). To do this, run the following:
-    
+
         git remote add upstream https://github.com/allenai/my_package.git
-    
+
     Now if you do `git remote -v` again, you'll see
-    
+
         origin https://github.com/USERNAME/my_package.git (fetch)
         origin https://github.com/USERNAME/my_package.git (push)
         upstream https://github.com/allenai/my_package.git (fetch)
@@ -83,7 +83,7 @@ When you're ready to contribute code to address an open issue, please follow the
     <details><summary>Expand details 👇</summary><br/>
 
     Once you've added an "upstream" remote pointing to [https://github.com/allenai/my_package.git](https://github.com/allenai/my_package), keeping your fork up-to-date is easy:
-    
+
         git checkout main  # if not already on main
         git pull --rebase upstream main
         git push
@@ -95,9 +95,9 @@ When you're ready to contribute code to address an open issue, please follow the
     <details><summary>Expand details 👇</summary><br/>
 
     Commiting directly to the main branch of your fork is not recommended. It will be easier to keep your fork clean if you work on a seperate branch for each contribution you intend to make.
-    
+
     You can create a new branch with
-    
+
         # replace BRANCH with whatever name you want to give it
         git checkout -b BRANCH
         git push -u origin BRANCH
@@ -109,7 +109,7 @@ When you're ready to contribute code to address an open issue, please follow the
     <details><summary>Expand details 👇</summary><br/>
 
     Our continuous integration (CI) testing runs [a number of checks](https://github.com/allenai/my_package/actions) for each pull request on [GitHub Actions](https://github.com/features/actions). You can run most of these tests locally, which is something you should do *before* opening a PR to help speed up the review process and make it easier for us.
-  
+
     First, you should run [`isort`](https://github.com/PyCQA/isort) and [`black`](https://github.com/psf/black) to make sure you code is formatted consistently.
     Many IDEs support code formatters as plugins, so you may be able to setup isort and black to run automatically everytime you save.
     For example, [`black.vim`](https://github.com/psf/black/tree/master/plugin) will give you this functionality in Vim. But both `isort` and `black` are also easy to run directly from the command line.
@@ -131,7 +131,7 @@ When you're ready to contribute code to address an open issue, please follow the
     For example, if you've fixed a bug in `my_package/a/b.py`, you can run the tests specific to that module with
 
         pytest -v tests/a/b_test.py
- 
+
     Our CI will automatically check that test coverage stays above a certain threshold (around 90%). To check the coverage locally in this example, you could run
 
         pytest -v --cov my_package.a.b tests/a/b_test.py
