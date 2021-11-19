@@ -10,7 +10,7 @@ def main():
     with changelog.open() as f:
         lines = f.readlines()
 
-    insert_index: int
+    insert_index: int = -1
     for i in range(len(lines)):
         line = lines[i]
         if line.startswith("## Unreleased"):
@@ -20,7 +20,8 @@ def main():
             return
         elif line.startswith("## [v"):
             break
-    else:
+
+    if insert_index < 0:
         raise RuntimeError("Couldn't find 'Unreleased' section")
 
     lines.insert(insert_index, "\n")
