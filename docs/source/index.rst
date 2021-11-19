@@ -17,7 +17,6 @@ Contents
 
    installation
    overview
-   CONTRIBUTING
    CHANGELOG
 
 .. toctree::
@@ -25,6 +24,7 @@ Contents
    :caption: Development
 
    License <https://raw.githubusercontent.com/allenai/my_package/main/LICENSE>
+   CONTRIBUTING
    GitHub Repository <https://github.com/allenai/my_package>
 
 Team
