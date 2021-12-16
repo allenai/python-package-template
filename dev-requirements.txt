@@ -31,3 +31,6 @@ furo==2021.11.23
 
 # Lets Sphinx parse markdown files in addition to rst.
 myst-parser==0.15.2
+
+# For parsing and comparing version numbers.
+packaging
