@@ -2,14 +2,15 @@
 flake8
 
 # Static type checking
-mypy==0.910
+mypy==0.920
 
 # Automatic code formatting
-black==21.11b1
+black==21.12b0
 isort==5.10.1
 
 # Running tests
 pytest
+pytest-sphinx
 
 # Allows generation of coverage reports with pytest.
 pytest-cov
@@ -24,13 +25,19 @@ setuptools
 wheel
 
 # Building docs
-Sphinx==4.3.0
+Sphinx>=4.3.0,<4.4.0
 
 # Sphinx theme: https://sphinx-themes.org/sample-sites/furo/
 furo==2021.11.23
 
 # Lets Sphinx parse markdown files in addition to rst.
-myst-parser==0.15.2
+myst-parser>=0.15.2,<0.17.0
+
+# Adds a copy button to code examples in the docs.
+sphinx-copybutton==0.4.0
+
+# Live rebuilding and reloading of docs for developing locally.
+sphinx-autobuild==2021.3.14
 
 # For parsing and comparing version numbers.
 packaging
