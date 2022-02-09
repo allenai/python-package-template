@@ -34,7 +34,8 @@ This template repo comes with all of the boiler plate for:
     find . -type f -not -path './.git/*' -not -path ./README.md -not -path './docs/build/*' -not -path '*__pycache__*' -exec sed -i '' -e 's/my_package/actual_name_of_package/g' {} \;
     ```
 
-3. Add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`.
+3. Add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`. To add these, go to "Settings" > "Secrets" > "Actions", and then click "New repository secret".
+    If you don't have PyPI account yet, you can create one for free. Or, if you'd like to publish your package under the AllenNLP PyPI account, just ask someone on the AllenNLP team for the credentials.
 
 4. Commit and push your changes, then make sure all CI checks pass.
 
