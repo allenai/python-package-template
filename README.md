@@ -11,7 +11,7 @@ This template repo comes with all of the boiler plate for:
 - Great looking API documentation built using [Sphinx](https://www.sphinx-doc.org/en/master/) (run `make docs` to preview).
 - Automatic GitHub and PyPI releases. Just follow the steps in [`RELEASE_PROCESS.md`](./RELEASE_PROCESS.md) to trigger a new release.
 
-## Usage
+## Setup
 
 1. [Create a new repository](https://github.com/allenai/python-package-template/generate) from this template with the desired name of your Python package.
 
@@ -51,3 +51,8 @@ This template repo comes with all of the boiler plate for:
     Then hit "Save".
 
     After your first release, the docs will automatically be publish to [your-project-name.readthedocs.io](https://your-project-name.readthedocs.io/).
+
+## Create a release
+
+Creating new GitHub and PyPI releases is easy. The GitHub Actions workflow that comes with this repository will handle all of that for you.
+All you need to do is follow the instructions in [RELEASE_PROCESS.md](./RELEASE_PROCESS.md).
