@@ -52,7 +52,7 @@ This template repo comes with all of the boiler plate for:
 
     After your first release, the docs will automatically be publish to [your-project-name.readthedocs.io](https://your-project-name.readthedocs.io/).
 
-## Create a release
+## Creating a new release
 
 Creating new GitHub and PyPI releases is easy. The GitHub Actions workflow that comes with this repository will handle all of that for you.
 All you need to do is follow the instructions in [RELEASE_PROCESS.md](./RELEASE_PROCESS.md).
