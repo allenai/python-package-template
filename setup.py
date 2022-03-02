@@ -54,5 +54,5 @@ setup(
     package_data={"my_package": ["py.typed"]},
     install_requires=read_requirements("requirements.txt"),
     extras_require={"dev": read_requirements("dev-requirements.txt")},
-    python_requires=">=3.6.1",
+    python_requires=">=3.7",
 )
