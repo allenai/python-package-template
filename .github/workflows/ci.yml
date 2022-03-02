@@ -42,26 +42,19 @@ jobs:
             run: |
               pytest -v --color=yes tests/
 
-        include:
-          - python: ${{ env.DEFAULT_PYTHON }}
-            task:
-              name: Build
-              run: |
-                python setup.py check
-                python setup.py bdist_wheel sdist
+          - name: Build
+            run: |
+              python setup.py check
+              python setup.py bdist_wheel sdist
 
-          - python: ${{ env.DEFAULT_PYTHON }}
-            task:
-              name: Style
-              run: |
-                isort --check .
-                black --check .
+          - name: Style
+            run: |
+              isort --check .
+              black --check .
 
-          - python: ${{ env.DEFAULT_PYTHON }}
-            task:
-              name: Docs
-              run: |
-                cd docs && make html
+          - name: Docs
+            run: |
+              cd docs && make html
 
     steps:
       - uses: actions/checkout@v2
