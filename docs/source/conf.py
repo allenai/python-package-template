@@ -6,12 +6,14 @@
 
 # -- Path setup --------------------------------------------------------------
 
+import os
+import sys
+from datetime import datetime
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
-import sys
 
 sys.path.insert(0, os.path.abspath("../../"))
 
@@ -20,7 +22,7 @@ from my_package.version import VERSION, VERSION_SHORT  # noqa: E402
 # -- Project information -----------------------------------------------------
 
 project = "my_package"
-copyright = "2022, Allen Institute for Artificial Intelligence"
+copyright = f"{datetime.today().year}, Allen Institute for Artificial Intelligence"
 author = "Allen Institute for Artificial Intelligence"
 version = VERSION_SHORT
 release = VERSION
