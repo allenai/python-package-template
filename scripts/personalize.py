@@ -85,6 +85,7 @@ def main(
 
     # Confirm before continuing.
     print(f"Repository URL set to: [link={repo_url}]{repo_url}[/]")
+    print(f"Package name set to: [cyan]{package_actual_name}[/]")
     if not yes:
         yes = Confirm.ask("Is this correct?")
     if not yes:
