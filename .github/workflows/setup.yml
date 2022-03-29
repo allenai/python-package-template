@@ -37,9 +37,13 @@ jobs:
         shell: bash
         run: |
           set -eo pipefail
+          # Check that 'new-package' replaced 'my-package' in some files.
           grep -q 'new-package' setup.py .github/workflows/main.yml CONTRIBUTING.md
+          # Check that the new repo URL replaced the old one in some files.
           grep -q 'https://github.com/epwalsh/new-repo' setup.py CONTRIBUTING.md
-          if grep -q 'my-package' setup.py CONTRIBUTING.md; then
-            echo "Found 'my-package' where it shouldn't be"
+          # Double check that there are no lingering mentions of 'my-package'/'my_package'.
+          if grep 'my[-_]package' setup.py CONTRIBUTING.md scripts/release.sh docs/source/conf.py; then
+            echo "Found 'my[-_]package' where it shouldn't be!"
             exit 1
           fi
+          echo "All good!"
