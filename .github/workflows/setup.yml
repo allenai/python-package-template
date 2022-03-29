@@ -42,7 +42,7 @@ jobs:
           # Check that the new repo URL replaced the old one in some files.
           grep -q 'https://github.com/epwalsh/new-repo' setup.py CONTRIBUTING.md
           # Double check that there are no lingering mentions of old names.
-          for pattern in 'my[-_]package' 'https://github.com/allenai/python-package-template'; do
+          for pattern in 'my[-_]package' 'https://github.com/allenai/python-package-template' 'new-package'; do
             if find . -type f -not -path './.git/*' | xargs grep "$pattern"; then
               echo "Found ${pattern} where it shouldn't be!"
               exit 1
