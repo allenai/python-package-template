@@ -41,9 +41,11 @@ jobs:
           grep -q 'new-package' setup.py .github/workflows/main.yml CONTRIBUTING.md
           # Check that the new repo URL replaced the old one in some files.
           grep -q 'https://github.com/epwalsh/new-repo' setup.py CONTRIBUTING.md
-          # Double check that there are no lingering mentions of 'my-package'/'my_package'.
-          if grep 'my[-_]package' setup.py CONTRIBUTING.md scripts/release.sh docs/source/conf.py; then
-            echo "Found 'my[-_]package' where it shouldn't be!"
-            exit 1
-          fi
+          # Double check that there are no lingering mentions of old names.
+          for pattern in 'my[-_]package' 'https://github.com/allenai/python-package-template'; do
+            if find . -type f -not -path './.git/*' | xargs grep "$pattern"; then
+              echo "Found ${pattern} where it shouldn't be!"
+              exit 1
+            fi
+          done
           echo "All good!"

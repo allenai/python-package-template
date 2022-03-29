@@ -11,6 +11,7 @@ from typing import Generator, List, Tuple
 import click
 from click_help_colors import HelpColorsCommand
 from rich import print
+from rich.markdown import Markdown
 from rich.prompt import Confirm
 from rich.syntax import Syntax
 from rich.traceback import install
@@ -22,11 +23,11 @@ REPO_BASE = (Path(__file__).parent / "..").resolve()
 FILES_TO_REMOVE = {
     REPO_BASE / ".github" / "workflows" / "setup.yml",
     REPO_BASE / "setup-requirements.txt",
+    REPO_BASE / "scripts" / "personalize.py",
 }
 
 PATHS_TO_IGNORE = {
     REPO_BASE / "README.md",
-    REPO_BASE / "scripts" / "personalize.py",
     REPO_BASE / ".git",
     REPO_BASE / "docs" / "source" / "_static" / "favicon.ico",
 }
@@ -115,6 +116,14 @@ def main(
         (REPO_BASE / "my_package").replace(REPO_BASE / package_dir_name)
     else:
         print(f"Renaming 'my_package' directory to '{package_dir_name}'")
+
+    # Start with a fresh README.
+    readme_contents = f"""# {package_actual_name}\n"""
+    if not dry_run:
+        with open(REPO_BASE / "README.md", "w+t") as readme_file:
+            readme_file.write(readme_contents)
+    else:
+        print("Replacing README.md contents with:\n", Markdown(readme_contents))
 
     install_example = Syntax("pip install -e '.[dev]'", "bash")
     print(
