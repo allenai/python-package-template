@@ -5,12 +5,6 @@ it for own project.
 This script is interactive and will prompt you for various inputs.
 """
 
-FILES_TO_REMOVE = {
-    ".github/workflows/setup.yml",
-    "setup-requirements.txt",
-}
-
-BASE_URL_TO_REPLACE = "https://github.com/allenai/python-package-template"
 
 import click
 from click_help_colors import HelpColorsCommand
@@ -19,6 +13,13 @@ from rich.prompt import Confirm
 from rich.traceback import install
 
 install(show_locals=True, suppress=[click])
+
+FILES_TO_REMOVE = {
+    ".github/workflows/setup.yml",
+    "setup-requirements.txt",
+}
+
+BASE_URL_TO_REPLACE = "https://github.com/allenai/python-package-template"
 
 
 @click.command(
@@ -50,6 +51,8 @@ install(show_locals=True, suppress=[click])
     default=False,
 )
 def main(github_org: str, github_repo: str, package_name: str, yes: bool = False):
+    repo_url = f"https://github.com/{github_org}/{github_repo}"
+    print(f"Repository URL set to: [link={repo_url}]{repo_url}[/]")
     if not yes:
         yes = Confirm.ask("Is this correct?")
     if not yes:
