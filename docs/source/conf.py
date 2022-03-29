@@ -21,7 +21,7 @@ from my_package.version import VERSION, VERSION_SHORT  # noqa: E402
 
 # -- Project information -----------------------------------------------------
 
-project = "my_package"
+project = "my-package"
 copyright = f"{datetime.today().year}, Allen Institute for Artificial Intelligence"
 author = "Allen Institute for Artificial Intelligence"
 version = VERSION_SHORT
@@ -75,7 +75,7 @@ intersphinx_mapping = {
 #
 html_theme = "furo"
 
-html_title = f"my_package v{VERSION}"
+html_title = f"my-package v{VERSION}"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

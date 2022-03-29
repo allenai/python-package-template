@@ -15,11 +15,9 @@ This template repo comes with all of the boiler plate for:
 
 1. [Create a new repository](https://github.com/allenai/python-package-template/generate) from this template with the desired name of your project.
 
-    Your project name (i.e. the name of the repository) and the name of the corresponding Python package(s) don't necessarily need to match. For example, it's common practice to name a repository using dashes (e.g. `my-package`), while naming the Python package itself using underscores (e.g. `my_package`).
+    Your project name (i.e. the name of the repository) and the name of the corresponding Python package don't necessarily need to match, but you might want to check on [PyPI](https://pypi.org/) first to see if the package name you want is already taken.
 
-    You might want to check on [PyPI](https://pypi.org/) first to see if the name is already taken.
-
-2. Create a new Python 3.7 or newer environment.
+2. Create a Python 3.7 or newer environment.
 
     If you're not sure how to create a suitable Python environment, the easiest way is using [Miniconda](https://docs.conda.io/en/latest/miniconda.html). On a Mac, for example, you can install Miniconda using [Homebrew](https://brew.sh/):
 
@@ -30,8 +28,8 @@ This template repo comes with all of the boiler plate for:
     Then you can create and activate a new Python environment by running:
 
     ```
-    conda create -n my_package python=3.9
-    conda activate my_package
+    conda create -n my-package python=3.9
+    conda activate my-package
     ```
 
 3. Now that you have a suitable Python environment, you're ready to personalize this repository. Just run:

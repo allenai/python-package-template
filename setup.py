@@ -31,7 +31,7 @@ with open("my_package/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(
-    name="my_package",
+    name="my-package",
     version=VERSION["VERSION"],
     description="",
     long_description=open("README.md").read(),
