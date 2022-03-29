@@ -15,7 +15,7 @@ from rich.prompt import Confirm
 from rich.syntax import Syntax
 from rich.traceback import install
 
-install(show_locals=True, suppress=[click], width=150)
+install(show_locals=True, suppress=[click])
 
 REPO_BASE = (Path(__file__).parent / "..").resolve()
 
@@ -28,6 +28,7 @@ PATHS_TO_IGNORE = {
     REPO_BASE / "README.md",
     REPO_BASE / "scripts" / "personalize.py",
     REPO_BASE / ".git",
+    REPO_BASE / "docs" / "source" / "_static" / "favicon.ico",
 }
 
 GITIGNORE_LIST = [
@@ -107,12 +108,7 @@ def main(
         for old, new in replacements:
             print(f"Replacing '{old}' with '{new}'")
     for path in iterfiles(REPO_BASE):
-        if path.is_dir():
-            continue
-        if not dry_run:
-            personalize_file(path, replacements)
-        else:
-            print(f"Personalizing {path}")
+        personalize_file(path, dry_run, replacements)
 
     # Rename 'my_package' directory to `package_dir_name`.
     if not dry_run:
@@ -120,9 +116,9 @@ def main(
     else:
         print(f"Renaming 'my_package' directory to '{package_dir_name}'")
 
-    install_example = Syntax(f"pip install -e '.[dev]'", "bash")
+    install_example = Syntax("pip install -e '.[dev]'", "bash")
     print(
-        f"[green]\N{check mark} Success![/] You can now install your package locally in development mode with:\n",
+        "[green]\N{check mark} Success![/] You can now install your package locally in development mode with:\n",
         install_example,
     )
 
@@ -147,15 +143,22 @@ def iterfiles(dir: Path) -> Generator[Path, None, None]:
             yield path
 
 
-def personalize_file(path: Path, replacements: List[Tuple[str, str]]):
+def personalize_file(path: Path, dry_run: bool, replacements: List[Tuple[str, str]]):
     with path.open("r+t") as file:
         filedata = file.read()
 
+    should_update: bool = False
     for old, new in replacements:
-        filedata = filedata.replace(old, new)
+        if filedata.count(old):
+            should_update = True
+            filedata = filedata.replace(old, new)
 
-    with path.open("w+t") as file:
-        file.write(filedata)
+    if should_update:
+        if not dry_run:
+            with path.open("w+t") as file:
+                file.write(filedata)
+        else:
+            print(f"Updating {path}")
 
 
 if __name__ == "__main__":
