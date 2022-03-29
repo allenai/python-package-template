@@ -14,7 +14,7 @@ on:
 
 jobs:
   test_personalize:
-    name: Test personalize
+    name: Personalize
     runs-on: [ubuntu-latest]
     timeout-minutes: 10
     steps:
