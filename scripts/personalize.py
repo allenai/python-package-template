@@ -148,13 +148,13 @@ def iterfiles(dir: Path) -> Generator[Path, None, None]:
 
 
 def personalize_file(path: Path, replacements: List[Tuple[str, str]]):
-    with path.open("r") as file:
+    with path.open("r+t") as file:
         filedata = file.read()
 
     for old, new in replacements:
         filedata = filedata.replace(old, new)
 
-    with path.open("w") as file:
+    with path.open("w+t") as file:
         file.write(filedata)
 
 
