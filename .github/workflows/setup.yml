@@ -39,7 +39,7 @@ jobs:
           set -eo pipefail
           grep -q 'new-package' setup.py .github/workflows/main.yml CONTRIBUTING.md
           grep -q 'https://github.com/epwalsh/new-repo' setup.py CONTRIBUTING.md
-          if [[ grep -q 'my-package' setup.py CONTRIBUTING.md ]]; then
+          if grep -q 'my-package' setup.py CONTRIBUTING.md; then
             echo "Found 'my-package' where it shouldn't be"
             exit 1
           fi
