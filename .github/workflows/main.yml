@@ -126,7 +126,7 @@ jobs:
         if: always()
         run: |
           . .venv/bin/activate
-          pip uninstall -y my_package
+          pip uninstall -y my-package
 
   release:
     name: Release
