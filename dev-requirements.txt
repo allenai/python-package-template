@@ -2,10 +2,10 @@
 flake8
 
 # Static type checking
-mypy==0.931
+mypy==0.942
 
 # Automatic code formatting
-black==21.12b0
+black==22.3.0
 isort==5.10.1
 
 # Running tests
@@ -14,10 +14,6 @@ pytest-sphinx
 
 # Allows generation of coverage reports with pytest.
 pytest-cov
-
-# Allows codecov to generate coverage reports
-coverage
-codecov
 
 # Needed for packaging and uploading to PyPi
 twine>=1.11.0
@@ -38,6 +34,9 @@ sphinx-copybutton==0.5.0
 
 # Live rebuilding and reloading of docs for developing locally.
 sphinx-autobuild==2021.3.14
+
+# Automatically adds types to docs
+sphinx-autodoc-typehints
 
 # For parsing and comparing version numbers.
 packaging

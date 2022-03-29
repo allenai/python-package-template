@@ -13,33 +13,42 @@ This template repo comes with all of the boiler plate for:
 
 ## Setup
 
-1. [Create a new repository](https://github.com/allenai/python-package-template/generate) from this template with the desired name of your Python package.
+1. [Create a new repository](https://github.com/allenai/python-package-template/generate) from this template with the desired name of your project.
 
-    It's important that the name of the repository and the name of the Python package match exactly, otherwise you might end up with some broken links.
-    So you might want to check on [PyPI](https://pypi.org/) first to see if the name is already taken.
+    Your project name (i.e. the name of the repository) and the name of the corresponding Python package don't necessarily need to match, but you might want to check on [PyPI](https://pypi.org/) first to see if the package name you want is already taken.
 
-2. Change the name of the `my_package` directory to the name of your repo / Python package.
+2. Create a Python 3.7 or newer virtual environment.
 
-3. Replace all mentions of `my_package` throughout this repository with the new name.
+    If you're not sure how to create a suitable Python environment, the easiest way is using [Miniconda](https://docs.conda.io/en/latest/miniconda.html). On a Mac, for example, you can install Miniconda using [Homebrew](https://brew.sh/):
 
-    On OS X, a quick way to find all mentions of `my_package` is:
-
-    ```bash
-    find . -type f -not -path './.git/*' -not -path ./README.md -not -path './docs/build/*' -not -path '*__pycache__*' | xargs grep 'my_package'
+    ```
+    brew install miniconda
     ```
 
-    There is also a one-liner to find and replace all mentions `my_package` with `actual_name_of_package`:
+    Then you can create and activate a new Python environment by running:
 
-    ```bash
-    find . -type f -not -path './.git/*' -not -path ./README.md -not -path './docs/build/*' -not -path '*__pycache__*' -exec sed -i '' -e 's/my_package/actual_name_of_package/g' {} \;
+    ```
+    conda create -n my-package python=3.9
+    conda activate my-package
     ```
 
-3. Add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`. To add these, go to "Settings" > "Secrets" > "Actions", and then click "New repository secret".
+3. Now that you have a suitable Python environment, you're ready to personalize this repository. Just run:
+
+    ```
+    pip install -r setup-requirements.txt
+    python scripts/personalize.py
+    ```
+
+    And then follow the prompts.
+
+4. Commit and push your changes, then make sure all GitHub Actions jobs pass.
+
+5. (Optional) If you plan on publishing your package to PyPI, add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`. To add these, go to "Settings" > "Secrets" > "Actions", and then click "New repository secret".
+
     If you don't have PyPI account yet, you can create one for free. Or, if you'd like to publish your package under the AllenNLP PyPI account, just ask someone on the AllenNLP team for the credentials.
 
-4. Commit and push your changes, then make sure all CI checks pass.
+6. (Optional) If you want to deploy your API docs to [readthedocs.org](https://readthedocs.org), go to the [readthedocs dashboard](https://readthedocs.org/dashboard/import/?) and import your new project.
 
-5. Go to [readthedocs.org](https://readthedocs.org/dashboard/import/?) and import your new project.
     Then click on the "Admin" button, navigate to "Automation Rules" in the sidebar, click "Add Rule", and then enter the following fields:
 
     - **Description:** Publish new versions from tags
@@ -50,7 +59,7 @@ This template repo comes with all of the boiler plate for:
 
     Then hit "Save".
 
-    After your first release, the docs will automatically be publish to [your-project-name.readthedocs.io](https://your-project-name.readthedocs.io/).
+    After your first release, the docs will automatically be published to [your-project-name.readthedocs.io](https://your-project-name.readthedocs.io/).
 
 ## Creating a new release
 

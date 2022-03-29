@@ -31,7 +31,7 @@ with open("my_package/version.py", "r") as version_file:
     exec(version_file.read(), VERSION)
 
 setup(
-    name="my_package",
+    name="my-package",
     version=VERSION["VERSION"],
     description="",
     long_description=open("README.md").read(),
@@ -44,7 +44,7 @@ setup(
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     keywords="",
-    url="https://github.com/allenai/my_package",
+    url="https://github.com/allenai/python-package-template",
     author="Allen Institute for Artificial Intelligence",
     author_email="contact@allenai.org",
     license="Apache",

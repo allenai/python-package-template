@@ -1,0 +1,51 @@
+name: Setup
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test_personalize:
+    name: Personalize
+    runs-on: [ubuntu-latest]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.7'
+
+      - name: Install prerequisites
+        run: |
+          pip install -r setup-requirements.txt
+
+      - name: Run personalize script
+        run: |
+          python scripts/personalize.py --github-org epwalsh --github-repo new-repo --package-name new-package --yes
+
+      - name: Verify changes
+        shell: bash
+        run: |
+          set -eo pipefail
+          # Check that 'new-package' replaced 'my-package' in some files.
+          grep -q 'new-package' setup.py .github/workflows/main.yml CONTRIBUTING.md
+          # Check that the new repo URL replaced the old one in some files.
+          grep -q 'https://github.com/epwalsh/new-repo' setup.py CONTRIBUTING.md
+          # Double check that there are no lingering mentions of old names.
+          for pattern in 'my[-_]package' 'https://github.com/allenai/python-package-template'; do
+            if find . -type f -not -path './.git/*' | xargs grep "$pattern"; then
+              echo "Found ${pattern} where it shouldn't be!"
+              exit 1
+            fi
+          done
+          echo "All good!"

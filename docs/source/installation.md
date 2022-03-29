@@ -1,23 +1,23 @@
 Installation
 ============
 
-**my_package** supports Python >= 3.6.
+**my-package** supports Python >= 3.7.
 
 ## Installing with `pip`
 
-**my_package** is available [on PyPI](https://pypi.org/project/my_package/). Just run
+**my-package** is available [on PyPI](https://pypi.org/project/my-package/). Just run
 
 ```bash
-pip install my_package
+pip install my-package
 ```
 
 ## Installing from source
 
-To install **my_package** from source, first clone [the repository](https://github.com/allenai/my_package):
+To install **my-package** from source, first clone [the repository](https://github.com/allenai/python-package-template):
 
 ```bash
-git clone https://github.com/allenai/my_package.git
-cd my_package
+git clone https://github.com/allenai/python-package-template.git
+cd python-package-template
 ```
 
 Then run

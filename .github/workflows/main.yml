@@ -1,4 +1,4 @@
-name: CI
+name: Main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -18,11 +18,10 @@ env:
   # Change this to invalidate existing cache.
   CACHE_PREFIX: v0
   PYTHON_PATH: ./
-  DEFAULT_PYTHON: '3.8'
 
 jobs:
   checks:
-    name: python ${{ matrix.python }} - ${{ matrix.task.name }}
+    name: Python ${{ matrix.python }} - ${{ matrix.task.name }}
     runs-on: [ubuntu-latest]
     timeout-minutes: 30
     strategy:
@@ -30,37 +29,43 @@ jobs:
       matrix:
         python: ['3.7', '3.8', '3.9', '3.10']
         task:
-          - name: Lint
-            run: |
-              flake8 .
-
-          - name: Type check
-            run: |
-              mypy .
-
           - name: Test
             run: |
               pytest -v --color=yes tests/
 
-          - name: Build
-            run: |
-              python setup.py check
-              python setup.py bdist_wheel sdist
+        include:
+          - python: '3.10'
+            task:
+              name: Lint
+              run: flake8 .
 
-          - name: Style
-            run: |
-              isort --check .
-              black --check .
+          - python: '3.10'
+            task:
+              name: Type check
+              run: mypy .
 
-          - name: Docs
-            run: |
-              cd docs && make html
+          - python: '3.10'
+            task:
+              name: Build
+              run: |
+                python setup.py check
+                python setup.py bdist_wheel sdist
+
+          - python: '3.10'
+            task:
+              name: Style
+              run: black --check .
+
+          - python: '3.10'
+            task:
+              name: Docs
+              run: cd docs && make html
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python }}
 
@@ -77,7 +82,7 @@ jobs:
           # Use week number in cache key so we can refresh the cache weekly.
           echo "WEEK_NUMBER=$(date +%V)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: virtualenv-cache
         with:
           path: .venv
@@ -111,7 +116,7 @@ jobs:
           ${{ matrix.task.run }}
 
       - name: Upload package distribution files
-        if: matrix.task.name == 'Build' && matrix.python == env.DEFAULT_PYTHON
+        if: matrix.task.name == 'Build'
         uses: actions/upload-artifact@v2
         with:
           name: package
@@ -121,7 +126,7 @@ jobs:
         if: always()
         run: |
           . .venv/bin/activate
-          pip uninstall -y my_package
+          pip uninstall -y my-package
 
   release:
     name: Release
@@ -132,9 +137,9 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Setup Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v3
         with:
-          python-version: ${{ env.DEFAULT_PYTHON }}
+          python-version: '3.10'
 
       - name: Install requirements
         run: |
