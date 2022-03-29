@@ -1,4 +1,4 @@
-name: CI
+name: Main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,7 +21,7 @@ env:
 
 jobs:
   checks:
-    name: python ${{ matrix.python }} - ${{ matrix.task.name }}
+    name: Python ${{ matrix.python }} - ${{ matrix.task.name }}
     runs-on: [ubuntu-latest]
     timeout-minutes: 30
     strategy:
