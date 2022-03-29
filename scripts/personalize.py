@@ -15,7 +15,7 @@ from rich.prompt import Confirm
 from rich.syntax import Syntax
 from rich.traceback import install
 
-install(show_locals=True, suppress=[click])
+install(show_locals=True, suppress=[click], width=150)
 
 REPO_BASE = (Path(__file__).parent / "..").resolve()
 

@@ -31,4 +31,11 @@ jobs:
 
       - name: Run personalize script
         run: |
-          python scripts/personalize.py --github-org allenai --github-repo new-package --package-name new_package --yes
+          python scripts/personalize.py --github-org epwalsh --github-repo new-repo --package-name new-package --yes
+
+      - name: Verify changes
+        shell: bash
+        run: |
+          set -eo pipefail
+          grep -q 'new-package' setup.py
+          grep -q 'https://github.com/epwalsh/new-repo' setup.py
