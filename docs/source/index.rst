@@ -23,9 +23,9 @@ Contents
    :hidden:
    :caption: Development
 
-   License <https://raw.githubusercontent.com/allenai/my_package/main/LICENSE>
+   License <https://raw.githubusercontent.com/allenai/python-package-template/main/LICENSE>
    CONTRIBUTING
-   GitHub Repository <https://github.com/allenai/my_package>
+   GitHub Repository <https://github.com/allenai/python-package-template>
 
 Team
 ----
@@ -34,13 +34,13 @@ Team
 `the Allen Institute for Artificial Intelligence (AI2) <https://allenai.org/>`_.
 AI2 is a non-profit institute with the mission to contribute to humanity through high-impact AI research and engineering.
 To learn more about who specifically contributed to this codebase, see
-`our contributors <https://github.com/allenai/my_package/graphs/contributors>`_ page.
+`our contributors <https://github.com/allenai/python-package-template/graphs/contributors>`_ page.
 
 License
 -------
 
 **my_package** is licensed under `Apache 2.0 <https://www.apache.org/licenses/LICENSE-2.0>`_.
-A full copy of the license can be found `on GitHub <https://github.com/allenai/my_package/blob/main/LICENSE>`_.
+A full copy of the license can be found `on GitHub <https://github.com/allenai/python-package-template/blob/main/LICENSE>`_.
 
 Indices and tables
 ------------------

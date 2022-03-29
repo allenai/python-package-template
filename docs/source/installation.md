@@ -1,7 +1,7 @@
 Installation
 ============
 
-**my_package** supports Python >= 3.6.
+**my_package** supports Python >= 3.7.
 
 ## Installing with `pip`
 
@@ -13,10 +13,10 @@ pip install my_package
 
 ## Installing from source
 
-To install **my_package** from source, first clone [the repository](https://github.com/allenai/my_package):
+To install **my_package** from source, first clone [the repository](https://github.com/allenai/python-package-template):
 
 ```bash
-git clone https://github.com/allenai/my_package.git
+git clone https://github.com/allenai/python-package-template.git
 cd my_package
 ```
 

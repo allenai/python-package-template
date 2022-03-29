@@ -1,0 +1,34 @@
+name: Setup
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  test_personalize:
+    name: Test personalize
+    runs-on: [ubuntu-latest]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+
+      - name: Install prerequisites
+        run: |
+          pip install -r setup-requirements.txt
+
+      - name: Run personalize script
+        run: |
+          python scripts/personalize.py --github-org allenai --github-repo new-package --package-name new_package --yes
