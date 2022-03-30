@@ -5,7 +5,7 @@ This is a template repository for Python package projects.
 ## In this README :point_down:
 
 - [Features](#features)
-- [Usage](#usagae)
+- [Usage](#usage)
   - [Initial setup](#initial-setup)
   - [Creating releases](#creating-releases)
 - [Projects using this template](#projects-using-this-template)
@@ -90,6 +90,8 @@ Here is an incomplete list of some projects that started off with this template:
 - [ai2-tango](https://github.com/allenai/tango)
 - [cached-path](https://github.com/allenai/cached_path)
 - [beaker-py](https://github.com/allenai/beaker-py)
+
+☝️ *Want your work featured here? Just open a pull request that adds the link.*
 
 ## Contributing
 
