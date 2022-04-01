@@ -168,4 +168,4 @@ When you're ready to contribute code to address an open issue, please follow the
 ### Writing docstrings
 
 We use [Sphinx](https://www.sphinx-doc.org/en/master/index.html) to build our API docs, which automatically parses all docstrings
-of public classes and methods. All docstrings should adhere to the [Numpy styling convention](https://www.sphinx-doc.org/en/master/usage/extensions/example_numpy.html).
+of public classes and methods. All docstrings should adhere to the [NumPy styling convention](https://www.sphinx-doc.org/en/master/usage/extensions/example_numpy.html).
