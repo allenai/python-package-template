@@ -67,6 +67,12 @@ intersphinx_mapping = {
     #  "transformers": ("https://huggingface.co/docs/transformers/master/en", None),
 }
 
+# By default, sort documented members by type within classes and modules.
+autodoc_member_order = "groupwise"
+
+# Include default values when documenting parameter types.
+typehints_defaults = "comma"
+
 
 # -- Options for HTML output -------------------------------------------------
 
