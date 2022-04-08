@@ -143,6 +143,7 @@ jobs:
 
       - name: Install requirements
         run: |
+          pip install --upgrade pip setuptools wheel
           pip install -r dev-requirements.txt
 
       - name: Prepare environment
