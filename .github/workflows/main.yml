@@ -23,11 +23,11 @@ jobs:
   checks:
     name: Python ${{ matrix.python }} - ${{ matrix.task.name }}
     runs-on: [ubuntu-latest]
-    timeout-minutes: 30
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.7', '3.8', '3.9', '3.10']
+        python: ['3.7', '3.10']
         task:
           - name: Test
             run: |
@@ -54,7 +54,9 @@ jobs:
           - python: '3.10'
             task:
               name: Style
-              run: black --check .
+              run: |
+                isort --check .
+                black --check .
 
           - python: '3.10'
             task:
@@ -64,51 +66,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v3
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-venv
         with:
           python-version: ${{ matrix.python }}
-
-      - name: Install prerequisites
-        run: |
-          pip install --upgrade pip setuptools wheel virtualenv
-
-      - name: Set build variables
-        shell: bash
-        run: |
-          # Get the exact Python version to use in the cache key.
-          echo "PYTHON_VERSION=$(python --version)" >> $GITHUB_ENV
-          echo "RUNNER_ARCH=$(uname -m)" >> $GITHUB_ENV
-          # Use week number in cache key so we can refresh the cache weekly.
-          echo "WEEK_NUMBER=$(date +%V)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v3
-        id: virtualenv-cache
-        with:
-          path: .venv
-          key: ${{ env.CACHE_PREFIX }}-${{ env.WEEK_NUMBER }}-${{ runner.os }}-${{ env.RUNNER_ARCH }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('requirements.txt') }}-${{ hashFiles('dev-requirements.txt') }}
-          restore-keys: |
-            ${{ env.CACHE_PREFIX }}-${{ env.WEEK_NUMBER }}-${{ runner.os }}-${{ env.RUNNER_ARCH }}-${{ env.PYTHON_VERSION }}-
-
-      - name: Setup virtual environment (no cache hit)
-        if: steps.virtualenv-cache.outputs.cache-hit != 'true'
-        run: |
-          test -d .venv || virtualenv -p $(which python) --copies --reset-app-data .venv
-          . .venv/bin/activate
-          pip install -e .[dev]
-
-      - name: Install editable (cache hit)
-        if: steps.virtualenv-cache.outputs.cache-hit == 'true'
-        run: |
-          . .venv/bin/activate
-          pip install --no-deps -e .[dev]
-
-      - name: Show environment info
-        run: |
-          . .venv/bin/activate
-          which python
-          python --version
-          pip freeze
+          cache-prefix: ${{ env.CACHE_PREFIX }}
 
       - name: ${{ matrix.task.name }}
         run: |
