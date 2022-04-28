@@ -15,14 +15,17 @@ This is a template repository for Python package projects.
 
 This template repository comes with all of the boilerplate needed for:
 
-- Robust (and free) CI with [GitHub Actions](https://github.com/features/actions):
+⚙️ Robust (and free) CI with [GitHub Actions](https://github.com/features/actions):
   - Unit tests ran with [PyTest](https://docs.pytest.org) against multiple Python versions and operating systems.
   - Type checking with [mypy](https://github.com/python/mypy).
   - Linting with [flake8](https://flake8.pycqa.org/en/latest/).
   - Formatting with [isort](https://pycqa.github.io/isort/) and [black](https://black.readthedocs.io/en/stable/).
-- [Dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) configuration to keep your dependencies up-to-date.
-- Great looking API documentation built using [Sphinx](https://www.sphinx-doc.org/en/master/) (run `make docs` to preview).
-- Automatic GitHub and PyPI releases. Just follow the steps in [`RELEASE_PROCESS.md`](./RELEASE_PROCESS.md) to trigger a new release.
+
+🤖 [Dependabot](https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/) configuration to keep your dependencies up-to-date.
+
+📄 Great looking API documentation built using [Sphinx](https://www.sphinx-doc.org/en/master/) (run `make docs` to preview).
+
+🚀 Automatic GitHub and PyPI releases. Just follow the steps in [`RELEASE_PROCESS.md`](./RELEASE_PROCESS.md) to trigger a new release.
 
 ## Usage
 
