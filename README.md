@@ -62,7 +62,7 @@ This template repository comes with all of the boilerplate needed for:
 
 5. (Optional) If you plan on publishing your package to PyPI, add repository secrets for `PYPI_USERNAME` and `PYPI_PASSWORD`. To add these, go to "Settings" > "Secrets" > "Actions", and then click "New repository secret".
 
-    *If you don't have PyPI account yet, you can create one for free. Or, if you'd like to publish your package under the AllenNLP PyPI account, just ask someone on the AllenNLP team for the credentials.*
+    *If you don't have PyPI account yet, you can [create one for free](https://pypi.org/account/register/).*
 
 6. (Optional) If you want to deploy your API docs to [readthedocs.org](https://readthedocs.org), go to the [readthedocs dashboard](https://readthedocs.org/dashboard/import/?) and import your new project.
 
