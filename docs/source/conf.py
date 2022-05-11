@@ -106,3 +106,15 @@ html_theme_options = {
         },
     ],
 }
+
+# -- Hack to get rid of stupid warnings from sphinx_autodoc_typehints --------
+
+
+class ShutupSphinxAutodocTypehintsFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        if "Cannot resolve forward reference" in record.msg:
+            return False
+        return True
+
+
+logging.getLogger("sphinx.sphinx_autodoc_typehints").addFilter(ShutupSphinxAutodocTypehintsFilter())
