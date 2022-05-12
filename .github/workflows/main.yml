@@ -17,7 +17,7 @@ on:
 env:
   # Change this to invalidate existing cache.
   CACHE_PREFIX: v0
-  PYTHON_PATH: ./
+  PYTHONPATH: ./
 
 jobs:
   checks:
