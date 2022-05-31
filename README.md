@@ -9,6 +9,7 @@ This is a template repository for Python package projects.
   - [Initial setup](#initial-setup)
   - [Creating releases](#creating-releases)
 - [Projects using this template](#projects-using-this-template)
+- [FAQ](#faq)
 - [Contributing](#contributing)
 
 ## Features
@@ -93,8 +94,15 @@ Here is an incomplete list of some projects that started off with this template:
 - [ai2-tango](https://github.com/allenai/tango)
 - [cached-path](https://github.com/allenai/cached_path)
 - [beaker-py](https://github.com/allenai/beaker-py)
+- [gantry](https://github.com/allenai/beaker-gantry)
 
 ☝️ *Want your work featured here? Just open a pull request that adds the link.*
+
+## FAQ
+
+#### Should I use this template even if I don't want to publish my package?
+
+Absolutely! If you don't want to publish your package, just delete the `docs/` directory and the `release` job in [`.github/workflows/main.yml`](https://github.com/allenai/python-package-template/blob/main/.github/workflows/main.yml).
 
 ## Contributing
 
