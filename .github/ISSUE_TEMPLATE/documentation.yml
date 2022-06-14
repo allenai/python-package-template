@@ -1,6 +1,6 @@
 name: 📚 Documentation
 description: Report an issue related to https://my-package.readthedocs.io/latest
-labels: 'Documentation'
+labels: 'documentation'
 
 body:
 - type: textarea
