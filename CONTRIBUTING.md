@@ -16,7 +16,7 @@ code sample or an executable test case demonstrating the expected behavior.
 
 ### Do you have a suggestion for an enhancement or new feature?
 
-We use GitHub issues to track feature requests. Before you create an feature request:
+We use GitHub issues to track feature requests. Before you create a feature request:
 
 * Make sure you have a clear idea of the enhancement you would like. If you have a vague idea, consider discussing
 it first on a GitHub issue.
@@ -105,7 +105,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     <details><summary>Expand details 👇</summary><br/>
 
-    Commiting directly to the main branch of your fork is not recommended. It will be easier to keep your fork clean if you work on a seperate branch for each contribution you intend to make.
+    Committing directly to the main branch of your fork is not recommended. It will be easier to keep your fork clean if you work on a separate branch for each contribution you intend to make.
 
     You can create a new branch with
 
@@ -143,7 +143,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
         pytest -v tests/a/b_test.py
 
-    Our CI will automatically check that test coverage stays above a certain threshold (around 90%). To check the coverage locally in this example, you could run
+    To check the code coverage locally in this example, you could run
 
         pytest -v --cov my_package.a.b tests/a/b_test.py
 
