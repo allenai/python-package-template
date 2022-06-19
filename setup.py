@@ -32,7 +32,7 @@ with open("my_package/version.py", "r") as version_file:
 
 setup(
     name="my-package",
-    version=VERSION["VERSION"],
+    version=VERSION["RELEASE"],
     description="",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

@@ -18,15 +18,15 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.abspath("../../"))
 
-from my_package.version import VERSION, VERSION_SHORT  # noqa: E402
+from my_package import RELEASE, VERSION  # noqa: E402
 
 # -- Project information -----------------------------------------------------
 
 project = "my-package"
 copyright = f"{datetime.today().year}, Allen Institute for Artificial Intelligence"
 author = "Allen Institute for Artificial Intelligence"
-version = VERSION_SHORT
-release = VERSION
+version = VERSION
+release = RELEASE
 
 
 # -- General configuration ---------------------------------------------------
