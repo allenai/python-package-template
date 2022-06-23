@@ -1,1 +1,1 @@
-from .version import RELEASE, VERSION
+from .version import VERSION, VERSION_SHORT
