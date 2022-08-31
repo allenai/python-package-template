@@ -95,6 +95,7 @@ Here is an incomplete list of some projects that started off with this template:
 - [cached-path](https://github.com/allenai/cached_path)
 - [beaker-py](https://github.com/allenai/beaker-py)
 - [gantry](https://github.com/allenai/beaker-gantry)
+- [ip-bot](https://github.com/abe-101/ip-bot)
 
 ☝️ *Want your work featured here? Just open a pull request that adds the link.*
 
