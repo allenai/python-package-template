@@ -72,6 +72,16 @@ jobs:
           python-version: ${{ matrix.python }}
           cache-prefix: ${{ env.CACHE_PREFIX }}
 
+      - name: Restore mypy cache
+        if: matrix.task.name == 'Type check'
+        uses: actions/cache@v3
+        with:
+          path: .mypy_cache
+          key: mypy-${{ env.CACHE_PREFIX }}-${{ runner.os }}-${{ matrix.python }}-${{ hashFiles('*requirements.txt') }}-${{ github.ref }}-${{ github.sha }}
+          restore-keys: |
+            mypy-${{ env.CACHE_PREFIX }}-${{ runner.os }}-${{ matrix.python }}-${{ hashFiles('*requirements.txt') }}-${{ github.ref }}
+            mypy-${{ env.CACHE_PREFIX }}-${{ runner.os }}-${{ matrix.python }}-${{ hashFiles('*requirements.txt') }}
+
       - name: ${{ matrix.task.name }}
         run: |
           . .venv/bin/activate
