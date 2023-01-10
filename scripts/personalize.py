@@ -34,7 +34,7 @@ PATHS_TO_IGNORE = {
 
 GITIGNORE_LIST = [
     line.strip()
-    for line in (REPO_BASE / ".gitignore").open().readlines()
+    for line in (REPO_BASE / ".gitignore").open(encoding="utf-8").readlines()
     if line.strip() and not line.startswith("#")
 ]
 
@@ -121,7 +121,7 @@ def main(
     # Start with a fresh README.
     readme_contents = f"""# {package_actual_name}\n"""
     if not dry_run:
-        with open(REPO_BASE / "README.md", "w+t") as readme_file:
+        with open(REPO_BASE / "README.md", mode="w+t", encoding="utf-8") as readme_file:
             readme_file.write(readme_contents)
     else:
         print("Replacing README.md contents with:\n", Markdown(readme_contents))
@@ -154,7 +154,7 @@ def iterfiles(dir: Path) -> Generator[Path, None, None]:
 
 
 def personalize_file(path: Path, dry_run: bool, replacements: List[Tuple[str, str]]):
-    with path.open("r+t") as file:
+    with path.open(mode="r+t", encoding="utf-8") as file:
         filedata = file.read()
 
     should_update: bool = False
@@ -165,7 +165,7 @@ def personalize_file(path: Path, dry_run: bool, replacements: List[Tuple[str, st
 
     if should_update:
         if not dry_run:
-            with path.open("w+t") as file:
+            with path.open(mode="w+t", encoding="utf-8") as file:
                 file.write(filedata)
         else:
             print(f"Updating {path}")
