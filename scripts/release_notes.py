@@ -46,6 +46,9 @@ def get_change_log_notes() -> str:
 def get_commit_history() -> str:
     new_version = packaging.version.parse(TAG)
 
+    # Pull all tags.
+    os.popen("git fetch --tags")
+
     # Get all tags sorted by version, latest first.
     all_tags = os.popen("git tag -l --sort=-version:refname 'v*'").read().split("\n")
 
