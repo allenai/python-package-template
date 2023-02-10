@@ -36,7 +36,7 @@ This template repository comes with all of the boilerplate needed for:
 
     *Your project name (i.e. the name of the repository) and the name of the corresponding Python package don't necessarily need to match, but you might want to check on [PyPI](https://pypi.org/) first to see if the package name you want is already taken.*
 
-2. Create a Python 3.7 or newer virtual environment.
+2. Create a Python 3.8 or newer virtual environment.
 
     *If you're not sure how to create a suitable Python environment, the easiest way is using [Miniconda](https://docs.conda.io/en/latest/miniconda.html). On a Mac, for example, you can install Miniconda using [Homebrew](https://brew.sh/):*
 
