@@ -26,3 +26,11 @@ reportPrivateImportUsage = false
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+ignore_missing_imports = true
+no_site_packages = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+strict_optional = false
