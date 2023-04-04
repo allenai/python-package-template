@@ -36,6 +36,7 @@ dev = [
     "pytest-sphinx",
     "pytest-cov",
     "twine>=1.11.0",
+    "build",
     "setuptools",
     "wheel",
     "Sphinx>=4.3.0,<6.2.0",
