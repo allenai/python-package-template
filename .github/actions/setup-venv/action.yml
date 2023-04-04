@@ -15,11 +15,13 @@ runs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python-version }}
+        cache: "pip"
+        cache-dependency-path: "pyproject.toml"
 
     - shell: bash
       run: |
         # Install prerequisites.
-        pip install --upgrade pip setuptools wheel virtualenv
+        pip install --upgrade pip setuptools wheel virtualenv build
 
     - shell: bash
       run: |
