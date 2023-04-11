@@ -92,6 +92,7 @@ reportPrivateImportUsage = false
 [tool.mypy]
 ignore_missing_imports = true
 no_site_packages = true
+check_untyped_defs = true
 
 [[tool.mypy.overrides]]
 module = "tests.*"
