@@ -23,7 +23,9 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.7'
+          python-version: "3.8"
+          cache: "pip"
+          cache-dependency-path: "setup-requirements.txt"
 
       - name: Install prerequisites
         run: |
@@ -38,9 +40,9 @@ jobs:
         run: |
           set -eo pipefail
           # Check that 'new-package' replaced 'my-package' in some files.
-          grep -q 'new-package' setup.py .github/workflows/main.yml CONTRIBUTING.md
+          grep -q 'new-package' pyproject.toml .github/workflows/main.yml CONTRIBUTING.md
           # Check that the new repo URL replaced the old one in some files.
-          grep -q 'https://github.com/epwalsh/new-repo' setup.py CONTRIBUTING.md
+          grep -q 'https://github.com/epwalsh/new-repo' pyproject.toml CONTRIBUTING.md
           # Double check that there are no lingering mentions of old names.
           for pattern in 'my[-_]package' 'https://github.com/allenai/python-package-template'; do
             if find . -type f -not -path './.git/*' | xargs grep "$pattern"; then

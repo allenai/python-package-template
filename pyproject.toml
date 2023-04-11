@@ -1,3 +1,69 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-package"
+dynamic = ["version"]
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+authors = [
+    {name = "Allen Institute for Artificial Intelligence", email = "contact@allenai.org"}
+]
+requires-python = ">=3.8"
+dependencies = [
+  # Add your own dependencies here
+]
+license = {file = "LICENSE"}
+
+[project.urls]
+homepage = "https://github.com/allenai/python-package-template"
+repository = "https://github.com/allenai/python-package-template"
+
+[project.optional-dependencies]
+dev = [
+    "flake8",
+    "mypy>=1.0,<1.1",
+    "black>=23.0,<24.0",
+    "isort>=5.12,<5.13",
+    "pytest",
+    "pytest-sphinx",
+    "pytest-cov",
+    "twine>=1.11.0",
+    "build",
+    "setuptools",
+    "wheel",
+    "Sphinx>=4.3.0,<6.2.0",
+    "furo==2022.12.7",
+    "myst-parser>=0.15.2,<0.19.0",
+    "sphinx-copybutton==0.5.1",
+    "sphinx-autobuild==2021.3.14",
+    "sphinx-autodoc-typehints",
+    "packaging"
+]
+
+[tool.setuptools.packages.find]
+exclude = [
+    "*.tests",
+    "*.tests.*",
+    "tests.*",
+    "tests",
+    "docs*",
+    "scripts*"
+]
+
+[tool.setuptools.package-data]
+my_package = ["py.typed"]
+
+[tool.setuptools.dynamic]
+version = {attr = "my_package.VERSION"}
+
 [tool.black]
 line-length = 100
 
@@ -23,13 +89,10 @@ multi_line_output = 3
 [tool.pyright]
 reportPrivateImportUsage = false
 
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [tool.mypy]
 ignore_missing_imports = true
 no_site_packages = true
+check_untyped_defs = true
 
 [[tool.mypy.overrides]]
 module = "tests.*"
