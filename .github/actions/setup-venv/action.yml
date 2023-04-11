@@ -15,8 +15,6 @@ runs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ inputs.python-version }}
-        cache: "pip"
-        cache-dependency-path: "pyproject.toml"
 
     - shell: bash
       run: |
@@ -32,7 +30,7 @@ runs:
       id: virtualenv-cache
       with:
         path: .venv
-        key: ${{ inputs.cache-prefix }}-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('requirements.txt', 'dev-requirements.txt') }}
+        key: ${{ inputs.cache-prefix }}-${{ runner.os }}-${{ env.PYTHON_VERSION }}-${{ hashFiles('pyproject.toml') }}
 
     - if: steps.virtualenv-cache.outputs.cache-hit != 'true'
       shell: bash
