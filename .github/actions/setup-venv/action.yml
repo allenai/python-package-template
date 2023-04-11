@@ -52,3 +52,5 @@ runs:
         # Show environment info.
         . .venv/bin/activate
         echo "✓ Installed $(python --version) virtual environment to $(which python)"
+        echo "Packages:"
+        pip freeze
