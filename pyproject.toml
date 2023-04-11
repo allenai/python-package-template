@@ -59,6 +59,9 @@ exclude = [
 [tool.setuptools.package-data]
 my_package = ["py.typed"]
 
+[tool.setuptools.dynamic]
+version = {attr = "my_package.VERSION"}
+
 [tool.black]
 line-length = 100
 
