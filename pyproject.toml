@@ -3,6 +3,7 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
+# See https://setuptools.pypa.io/en/latest/userguide/quickstart.html for more project configuration options.
 name = "my-package"
 dynamic = ["version"]
 readme = "README.md"
