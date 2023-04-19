@@ -28,7 +28,7 @@ repository = "https://github.com/allenai/python-package-template"
 
 [project.optional-dependencies]
 dev = [
-    "flake8",
+    "ruff",
     "mypy>=1.0,<1.1",
     "black>=23.0,<24.0",
     "isort>=5.12,<5.13",
@@ -66,9 +66,7 @@ version = {attr = "my_package.VERSION"}
 
 [tool.black]
 line-length = 100
-
 include = '\.pyi?$'
-
 exclude = '''
 (
       __pycache__
@@ -88,6 +86,13 @@ multi_line_output = 3
 
 [tool.pyright]
 reportPrivateImportUsage = false
+
+[tool.ruff]
+line-length = 115
+target-version = "py39"
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401"]
 
 [tool.mypy]
 ignore_missing_imports = true
