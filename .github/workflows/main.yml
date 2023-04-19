@@ -37,7 +37,7 @@ jobs:
           - python: "3.10"
             task:
               name: Lint
-              run: flake8 .
+              run: ruff check .
 
           - python: "3.10"
             task:

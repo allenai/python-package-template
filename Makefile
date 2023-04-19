@@ -7,6 +7,6 @@ docs :
 run-checks :
 	isort --check .
 	black --check .
-	flake8 .
+	ruff check .
 	mypy .
 	CUDA_VISIBLE_DEVICES='' pytest -v --color=yes --doctest-modules tests/ my_package/
