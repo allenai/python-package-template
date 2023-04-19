@@ -10,3 +10,8 @@ run-checks :
 	ruff check .
 	mypy .
 	CUDA_VISIBLE_DEVICES='' pytest -v --color=yes --doctest-modules tests/ my_package/
+
+.PHONY : build
+build :
+	rm -rf *.egg-info/
+	python -m build
