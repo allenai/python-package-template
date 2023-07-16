@@ -132,7 +132,7 @@ def main(
         if not dry_run:
             if path.name == "personalize.py" and sys.platform.startswith("win"):
                 # We can't unlink/remove an open file on Windows.
-                print(f"You can remove the 'scripts/personalize.py' file now")
+                print("You can remove the 'scripts/personalize.py' file now")
             else:
                 path.unlink()
 
