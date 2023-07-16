@@ -5,6 +5,7 @@ it for own project.
 This script is interactive and will prompt you for various inputs.
 """
 
+import sys
 from pathlib import Path
 from typing import Generator, List, Tuple
 
@@ -91,15 +92,7 @@ def main(
     if not yes:
         raise click.ClickException("Aborted, please run script again")
 
-    # Delete files that we don't need.
-    for path in FILES_TO_REMOVE:
-        assert path.is_file(), path
-        if not dry_run:
-            path.unlink()
-        else:
-            print(f"Removing {path}")
-
-    # Personalize remaining files.
+    # Personalize files.
     replacements = [
         (BASE_URL_TO_REPLACE, repo_url),
         (REPO_NAME_TO_REPLACE, github_repo),
@@ -110,7 +103,8 @@ def main(
         for old, new in replacements:
             print(f"Replacing '{old}' with '{new}'")
     for path in iterfiles(REPO_BASE):
-        personalize_file(path, dry_run, replacements)
+        if path.resolve() not in FILES_TO_REMOVE:
+            personalize_file(path, dry_run, replacements)
 
     # Rename 'my_package' directory to `package_dir_name`.
     if not dry_run:
@@ -131,6 +125,16 @@ def main(
         "[green]\N{check mark} Success![/] You can now install your package locally in development mode with:\n",
         install_example,
     )
+
+    # Lastly, remove that we don't need.
+    for path in FILES_TO_REMOVE:
+        assert path.is_file(), path
+        if not dry_run:
+            if path.name == "personalize.py" and sys.platform.startswith("win"):
+                # We can't unlink/remove an open file on Windows.
+                print(f"You can remove the 'scripts/personalize.py' file now")
+            else:
+                path.unlink()
 
 
 def iterfiles(dir: Path) -> Generator[Path, None, None]:
