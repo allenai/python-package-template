@@ -32,7 +32,7 @@ Changelog = "https://github.com/allenai/python-package-template/blob/main/CHANGE
 [project.optional-dependencies]
 dev = [
     "ruff",
-    "mypy>=1.0,<1.1",
+    "mypy>=1.0,<1.5",
     "black>=23.0,<24.0",
     "isort>=5.12,<5.13",
     "pytest",
@@ -42,12 +42,12 @@ dev = [
     "build",
     "setuptools",
     "wheel",
-    "Sphinx>=4.3.0,<6.2.0",
-    "furo==2022.12.7",
-    "myst-parser>=0.15.2,<0.19.0",
+    "Sphinx>=6.0,<8.0",
+    "furo==2023.5.20",
+    "myst-parser>=1.0,<2.1",
     "sphinx-copybutton==0.5.2",
     "sphinx-autobuild==2021.3.14",
-    "sphinx-autodoc-typehints",
+    "sphinx-autodoc-typehints==1.23.0",
     "packaging"
 ]
 
