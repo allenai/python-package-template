@@ -129,9 +129,9 @@ When you're ready to contribute code to address an open issue, please follow the
         isort .
         black .
 
-    Our CI also uses [`flake8`](https://github.com/allenai/python-package-template/tree/main/tests) to lint the code base and [`mypy`](http://mypy-lang.org/) for type-checking. You should run both of these next with
+    Our CI also uses [`ruff`](https://github.com/astral-sh/ruff) to lint the code base and [`mypy`](http://mypy-lang.org/) for type-checking. You should run both of these next with
 
-        flake8 .
+        ruff check .
 
     and
 
@@ -142,10 +142,6 @@ When you're ready to contribute code to address an open issue, please follow the
     For example, if you've fixed a bug in `my_package/a/b.py`, you can run the tests specific to that module with
 
         pytest -v tests/a/b_test.py
-
-    To check the code coverage locally in this example, you could run
-
-        pytest -v --cov my_package.a.b tests/a/b_test.py
 
     If your contribution involves additions to any public part of the API, we require that you write docstrings
     for each function, method, class, or module that you add.
