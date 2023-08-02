@@ -90,6 +90,7 @@ exclude = '''
 profile = "black"
 multi_line_output = 3
 
+# You can override these pyright settings by adding a personal pyrightconfig.json file.
 [tool.pyright]
 reportPrivateImportUsage = false
 
