@@ -68,7 +68,7 @@ include-package-data = true
 my_package = ["py.typed"]
 
 [tool.setuptools.dynamic]
-version = {attr = "my_package.VERSION"}
+version = {attr = "my_package.version.VERSION"}
 
 [tool.black]
 line-length = 100
