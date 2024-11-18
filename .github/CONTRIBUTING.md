@@ -93,7 +93,7 @@ When you're ready to contribute code to address an open issue, please follow the
 
     <details><summary>Expand details 👇</summary><br/>
 
-    Once you've added an "upstream" remote pointing to [https://github.com/allenai/python-package-temlate.git](https://github.com/allenai/python-package-template), keeping your fork up-to-date is easy:
+    Once you've added an "upstream" remote pointing to [https://github.com/allenai/python-package-template.git](https://github.com/allenai/python-package-template), keeping your fork up-to-date is easy:
 
         git checkout main  # if not already on main
         git pull --rebase upstream main
