@@ -32,7 +32,7 @@ Changelog = "https://github.com/allenai/python-package-template/blob/main/CHANGE
 [project.optional-dependencies]
 dev = [
     "ruff",
-    "mypy>=1.0,<1.5",
+    "mypy>=1.0,<1.7",
     "black>=23.0,<24.0",
     "isort>=5.12,<5.13",
     "pytest",
