@@ -97,6 +97,7 @@ Here is an incomplete list of some projects that started off with this template:
 - [gantry](https://github.com/allenai/beaker-gantry)
 - [ip-bot](https://github.com/abe-101/ip-bot)
 - [atty](https://github.com/mstuttgart/atty)
+- [generate-sequences](https://github.com/MagedSaeed/generate-sequences)
 
 ☝️ *Want your work featured here? Just open a pull request that adds the link.*
 
